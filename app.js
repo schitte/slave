@@ -20,7 +20,6 @@ app.post('/api/turing/submit', function (req, res) {
  var data = req.body['g-recaptcha-response'];
  console.log("form submitted by: " + name);
  urlBase = urlBase + "?secret=" + secret + "&response=" + data;
- console.log(urlBase);
  
  request({
    url: urlBase,
@@ -28,7 +27,13 @@ app.post('/api/turing/submit', function (req, res) {
   },
   function(error, response, body) {
    console.log(body);
-   res.send(body);
+   if(body.success==="true") {
+    var text = "Congrats " + name + "!" + "\n"
+    + "You are a human!"
+    res.send(text);
+   } else {
+    var text = "Sod off you filthy non-organic";
+   }
  });
 });
 
