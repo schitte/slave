@@ -20,16 +20,15 @@ app.post('/api/turing/submit', function (req, res) {
  var data = req.body['g-recaptcha-response'];
  console.log("form submitted by: " + name);
  
- request.post(
-  'https://www.google.com/recaptcha/api/siteverify',
-  { json: { secret: secret, response: data } },
-  function (error, response, body) {
-   if (!error && response.statusCode == 200) {
-    console.log(body)
-   }
-  }
- );
- 
+ request({
+   url: 'https://www.google.com/recaptcha/api/siteverify',
+   method: 'POST',
+   json: { secret: secret, response: data },
+  },
+  function(error, response, body) {
+   console.log(body);
+   res.send(body);
+ });
 });
 
 app.listen(process.env.PORT, function() {
