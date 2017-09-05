@@ -33,6 +33,7 @@ app.post('/api/turing/submit', function (req, res) {
     res.send(text);
    } else {
     var text = "Sod off you filthy non-organic";
+    res.send(text);
    }
  });
 });
