@@ -16,14 +16,18 @@ app.get('/test', function (req, res) {
 app.post('/api/turing/submit', function (req, res) {
  console.log(req.body);
  var secret = process.env.CAPTCHA_SECRET;
+ console.log(secret);
  var name = req.body.name;
  var data = req.body['g-recaptcha-response'];
+ console.log(data);
  console.log("form submitted by: " + name);
+ var input = {"secret": secret, "response": data};
+ console.log(input);
  
  request({
    url: 'https://www.google.com/recaptcha/api/siteverify',
    method: 'POST',
-   json: { secret: secret, response: data },
+   json: input,
   },
   function(error, response, body) {
    console.log(body);
