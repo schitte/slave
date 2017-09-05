@@ -38,6 +38,11 @@ app.post('/api/turing/submit', function (req, res) {
  });
 });
 
+app.post('/bot/fbook/received', function (req, res) {
+ console.log("Message came in from facebook");
+ console.log(res.body);
+});
+
 app.listen(process.env.PORT, function() {
  console.log('Server running on ' + process.env.PORT);
 });
