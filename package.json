@@ -5,6 +5,7 @@
     "node": "6.11.2"
   },
   "dependencies": {
-    "express": "4.15.4"
+    "express": "4.15.4",
+    "body-parser": "1.17.2"
   }
 }
