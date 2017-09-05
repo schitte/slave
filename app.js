@@ -14,6 +14,7 @@ app.get('/test', function (req, res) {
 });
 
 app.post('/api/turing/submit', function (req, res) {
+ console.log(req.body);
  var secret = process.env.CAPTCHA_SECRET;
  var name = req.body.name;
  var data = req.body.g-recaptcha-response;
