@@ -14,20 +14,17 @@ app.get('/test', function (req, res) {
 });
 
 app.post('/api/turing/submit', function (req, res) {
- console.log(req.body);
+ var urlBase = 'https://www.google.com/recaptcha/api/siteverify'
  var secret = process.env.CAPTCHA_SECRET;
- console.log(secret);
  var name = req.body.name;
  var data = req.body['g-recaptcha-response'];
- console.log(data);
  console.log("form submitted by: " + name);
- var input = {"secret": secret, "response": data};
- console.log(input);
+ urlBase = urlBase + "?secret=" + secret + "&response=" + data;
+ console.log(urlBase);
  
  request({
-   url: 'https://www.google.com/recaptcha/api/siteverify',
-   method: 'POST',
-   json: input,
+   url: urlBase,
+   method: 'POST'
   },
   function(error, response, body) {
    console.log(body);
