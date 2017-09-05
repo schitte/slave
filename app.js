@@ -26,10 +26,7 @@ app.post('/api/turing/submit', function (req, res) {
    method: 'POST'
   },
   function(error, response, body) {
-   console.log(body);
-   console.log(typeof(body));
    var success = JSON.parse(body).success;
-   console.log(success);
    if(success === true) {
     var text = "Congrats " + name + "!" + "\n"
     + "You are a human!"
